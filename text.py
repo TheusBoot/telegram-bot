@@ -33,11 +33,12 @@ def obter_chats():
 
 class Projeto:
 
-	def __init__(self):
-		#api_hash = "e4acdae0fs20aa3b9dff53f953absd61d3a14"
-		#api_id = 58729501
-		#sessao = "secao nova"
-
+	def __init__(self,api_hash,api_id,sessao):
+		
+		self.api_hash = api_hash  #representação do HASH: "e4acdae0fs20aa3b9dff53f953absd61d3a14"
+		self.api_id = api_id #representação do ID: 58721501
+		self.sessao = sessao #representação do ID: secao nova
+		
 		self.client = TelegramClient(self.sessao,self.api_id,self.api_hash)
 
 	
