@@ -8,9 +8,6 @@ import asyncio
 
 #sessao = 'repassar mensagem'
 
-#api_hash = "e4acdae0fs20aa3b9dff53f953absd61d3a14"
-#api_id = 58729501
-#sessao = "secao nova"
 
 def obter_chats():
 	client = TelegramClient(sessao, api_id, api_hash)
@@ -52,7 +49,7 @@ class Projeto:
 
 
 	def chat_2(self):
-		print('chat 2')
+		print('chat 2') #identificando o chat
 		@self.client.on(events.NewMessage(chats=[1001538470927]))
 		async def enviar_mensagem(event):
 
@@ -61,7 +58,7 @@ class Projeto:
 
 
 	def comercial(self):
-		print('chat 3')
+		print('chat 3') #identificando o chat
 		mensagem = """MENSAGEM DE COMERCIAL !"""
 
 		@self.client.on(events.NewMessage)
