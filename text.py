@@ -87,7 +87,11 @@ class Projeto:
 
 
 
-projec = Projeto()
+projec = Projeto(api_hash = "1212121",
+	api_id = 222011,
+	sessao = 'Nova',
+	id_canal_copiado = 102010201,
+	id_canal_recepetor = 1921012)
 
 projec.inicializador()
 
