@@ -1,0 +1,161 @@
+from telethon import TelegramClient, sync, events
+import asyncio
+import html
+import datetime
+from time import sleep
+import random
+
+class Projeto:
+
+    def __init__(self):
+        self.sessao = "secao nova"
+        self.api_id = 5873950
+        self.api_hash = "e4acdae0f20aa3b9d53f953ab61d3a14"
+        
+        
+        self.chat_id = -1001954230141
+        self.chat_id_grup = -1001921959542
+        self.chat_id_sala_sinais = -1001921959542
+        self.chat_id_sala_miner = -1001937684459
+
+        self.client = TelegramClient(self.sessao, self.api_id, self.api_hash) #init class name
+
+
+    async def resultado(self):
+        v = random.randint(6,10)
+        d = random.randint(0,3)
+        hora_atual = datetime.datetime.now()
+
+        for i in range(10,59,8):
+            if hora_atual.minute == i: # MINUTO, SELECECIONADO PARA MANDAR PLACAR NO GRUPO!
+
+                resultado_parcial = f"""💰PLACAR PARCIAL💰\n\n ✅WIN:{v} \n ❌LOSS:{d} \n \n """
+                await self.client.send_message(self.chat_id_sala_sinais, resultado_parcial, link_preview=False)
+                
+                #await asyncio.sleep(3)
+                #photo_path = "C:\\Users\\Lenovo\\Desktop\\SALA-SINAIS-TIGRINHO\\sticker.webp"
+                
+                #await self.client.send_file(self.chat_id_sala_sinais, file=photo_path)
+
+    
+
+
+    async def enviar_mensagem_sala_sinais(self):
+        horario_atual = datetime.datetime.now()
+        horario_3_minutos = horario_atual + datetime.timedelta(minutes=3)
+        horario_final = horario_3_minutos.strftime("%H:%M")
+        list_1 = [3,4,5,6,7]
+        list_2 = [4,6,7]
+        menssagem = f"""💰 Entrada Confirmada 💰\n \n🐯 Fortune Tiger \n💻 Site:[bet7k](https://go.aff.7k-partners.com/32jdru6k)\n🕑 Válido até: {horario_final}\n\n👉 {random.choice(list_1)}x Normal\n⚡ {random.choice(list_2)}x Turbo\n🚥 Intercalando\n \n📲 [Clique para abrir a corretora](https://go.aff.7k-partners.com/32jdru6k)\n🐯 [Clique aqui para abrir o Fortune Tiger](https://bet7k.com/casino/pgsoft/fortune-tiger) \n"""
+        
+        await self.client.send_message(self.chat_id_sala_sinais, menssagem, link_preview=False)
+
+    
+    async def sinais_finalizado(self):
+
+        #Envio de mensagem de fim de sinal
+        hora_atual_ = datetime.datetime.now().strftime("%H:%M")
+
+        mensagem = f"""💰 Sinal Finalizado 💰\n🐯 Fortune Tiger\n🕑 Finalizado às:{hora_atual_}"""
+
+        await self.client.send_message(self.chat_id_sala_sinais, mensagem, link_preview=False)
+
+    async def comercial_1(self):
+        mensagem_ = f"""💥 ATENÇÃO 💥\n\n 🦁ESSES SINAIS SÓ PEGA NA \n [BET7K](https://go.aff.7k-partners.com/32jdru6k)🦁"""
+        await self.client.send_message(self.chat_id_sala_sinais,mensagem_,link_preview=False)
+
+
+
+
+
+
+
+   # async def enviar_mensagem_comercial(self):
+        #mensagem = """HELLO WORD MAN !"""
+        #await client.send_file(group_id, file=photo_path, caption='Legenda opcional para a foto')
+
+      #  mensagem_1 = """💎VÍDEOS 24 HORAS: 💎\n\n🐯 JOGUE FORTUNE TIGER ONLINE🐯\n💻CLIQUE AQUI PARA PARTICIPAR DO VIP💻\n🐯GRUPO GRÁTIS🐯\n\n💰[CLIQUE AQUI PARA PARTICIPAR DO GRUPO](https://t.me/+sXYQ_2ysDDlhZjgx) 💰"""
+        #mensagem = """💎VÍDEOS 24 HORAS:💎"""
+        #await asyncio.sleep(50)
+        #await self.client.send_message(self.chat_id, mensagem)
+        #await self.client.send_message(self.chat_id, mensagem, link_preview=False)
+        #teste a baixo
+       # await self.client.send_file(self.chat_id,file=self.photo_path,caption=mensagem)
+
+   
+
+
+
+ 
+
+
+
+    async def mensagem_sala_de_sinais(self):
+        
+        while True:
+            lista = [90,100,150]
+            tempo = random.choice(lista)
+            #print(tempo) debug OFF
+            
+            await asyncio.sleep(tempo)
+            try:
+                await self.enviar_mensagem_sala_sinais()
+                await asyncio.sleep(180)
+                await self.sinais_finalizado()
+                c = True
+
+            except:
+                print('error1')
+
+            if c == True:
+                await asyncio.sleep(10)
+                await self.comercial_1()
+                await asyncio.sleep(5)
+                await self.resultado()                
+                c = False
+
+
+
+
+    #async def comercial(self):
+    #    while True:
+    #        try:
+    #            await self.enviar_mensagem_comercial()
+   #             await asyncio.sleep(180)
+     #       except:
+     #           pass
+     #       finally:
+      #          pass
+
+
+
+
+
+async def inicializador():
+    minha_classe = Projeto()
+
+    task_init = asyncio.create_task(minha_classe.client.start())
+    await task_init  # Aguarda a conclusão da tarefa de inicialização
+    # Agora que a conexão está estabelecida, podemos executar outras tarefas
+
+    #task_comercial = asyncio.create_task(minha_classe.comercial())
+
+    task_mensagem_sala_de_sinais = asyncio.create_task(minha_classe.mensagem_sala_de_sinais())
+
+    
+
+    #TASK DE FINALIZAÇÃO DE SERVIDOR
+    task_exit = asyncio.create_task(minha_classe.client.run_until_disconnected())
+
+    await asyncio.gather(
+        #task_me,
+        #task_main,
+        #task_chat_2,
+        #task_comercial,
+        task_mensagem_sala_de_sinais,
+        task_exit
+    )
+
+
+# Execução do programa assíncrono usando asyncio
+asyncio.run(inicializador())
