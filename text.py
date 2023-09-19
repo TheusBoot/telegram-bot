@@ -9,23 +9,6 @@ import asyncio
 #sessao = 'repassar mensagem'
 
 
-def obter_chats():
-	client = TelegramClient(sessao, api_id, api_hash)
-	client.start()
-	dialogs = client.get_dialogs()
-	for dialog in dialogs:
-		print('--------------------------------')
-		if dialog.id < 0:
-			print(f'Grupo: {dialog.title}')
-			print(f'id: {dialog.id}')
-		#else:
-		#	print(f'Nome: {dialog.title}')
-		#	print(f'id: {dialog.id}')
-
-		print('--------------------------------')
-
-	client.disconnect()
-
 #obter_chats()
 
 class Projeto:
