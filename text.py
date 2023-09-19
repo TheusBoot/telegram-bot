@@ -66,9 +66,9 @@ class Projeto:
 					
 
 	def inicializador(self):
-		self.mensagem_video_or_image()
-		self.mensagem_text()
-		self.comercial()
+		#self.mensagem_video_or_image()
+		#self.mensagem_text()
+		#self.comercial()
 		self.client.start()
 		self.client.run_until_disconnected()
  
