@@ -41,6 +41,15 @@ class Projeto:
 		
 		self.client = TelegramClient(self.sessao,self.api_id,self.api_hash)
 
+	def obter_chats(self):
+		coment = "s"
+		dialogs = self.client.get_dialogs()
+		for dialog in dialogs:
+			print('x')
+			if dialog.id < 0:
+				print(f'Grupo: {dialog.title}')
+				print(f'id: {dialog.id}')
+
 	def info(self):
 		pass
 		id_ = "1001515706428" # canal que será copiado
