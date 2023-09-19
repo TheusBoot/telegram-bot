@@ -56,13 +56,12 @@ class Projeto:
 				await self.client.send_message(self.id_canal_recepetor,event.message.text)
 
 
-	def comercial(self):
+	def comercial(self,mensagem):
 		print('chat 3') #identificando o chat
-		mensagem = """MENSAGEM DE COMERCIAL !"""
 
 		@self.client.on(events.NewMessage)
 		async def enviar_mensagem(event):
-			await asyncio.sleep(50)
+			await asyncio.sleep(3.1)
 			await self.client.send_message(self.id_canal_recepetor,mensagem)
 					
 
