@@ -1,5 +1,11 @@
 # Telegram BOT 1.0
 
+#Instalando as bibliotecas necessárias!
+```shell
+pip install telethon
+```
+***
+
 ## Aplicando os Imports Necessários
 
 ```python3
