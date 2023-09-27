@@ -1,7 +1,7 @@
 # Telegram BOT 1.0
 
 #Instalando as bibliotecas necessárias!
-```shell
+```shellScript
 pip install telethon
 ```
 ***
