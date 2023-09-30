@@ -7,8 +7,6 @@ import asyncio
 #from  senhas import api_hash,api_id
 
 #sessao = 'repassar mensagem'
-
-
 #obter_chats()
 
 class Projeto:
@@ -47,6 +45,21 @@ class Projeto:
 				await self.client.send_message(self.id_canal_recepetor,event.message)
 
 
+	def mensagem_video(self):
+		@self.client.on(events.NewMessage(chats=[self.id_canal_copiado]))
+		async def enviar_mensagem(event):
+			if event.message.video:
+				await self.client.send_message(self.id_canal_copiado,event.message)
+
+	
+	def mensagem_foto(self):
+		@self.client.on(events.NewMessage(chats=[self.id_canal_copiado]))
+		async def enviar_mensagem(event):
+			if event.message.photo:
+				await self.client.send_message(self.id_canal_copiado,event.message)
+
+
+
 
 	def mensagem_text(self):
 		print('chat 2') #identificando o chat
@@ -56,9 +69,12 @@ class Projeto:
 				await self.client.send_message(self.id_canal_recepetor,event.message.text)
 
 
-	def comercial(self,mensagem):
-		print('chat 3') #identificando o chat
+	#def comercial(self, id_canal=None, mensagem,tempo):
+	#	if id_canal is None:
+	#		pass
+		
 
+		print('chat 3') #identificando o chat
 		@self.client.on(events.NewMessage)
 		async def enviar_mensagem(event):
 			await asyncio.sleep(3.1)
